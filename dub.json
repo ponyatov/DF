@@ -1,0 +1,11 @@
+{
+	"name":          "df",
+	"description":   "D/FORTH",
+	"authors":      ["Dmitry Ponyatov"],
+	"copyright":     "Copyright © 2023, Dmitry Ponyatov",
+	"license":       "MIT",
+	"targetName":    "DF",
+	"targetPath":    "bin",
+	"targetType":    "executable",
+	"dependencies": {}
+}
