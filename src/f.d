@@ -1,4 +1,5 @@
 import std.stdio;
+import std.file;
 
 void main(string[] args) {
     writeln(args);
@@ -8,5 +9,6 @@ void main(string[] args) {
 }
 
 void parse(string scriptfile) {
-
+    auto src = readText(scriptfile);
+    writeln(src);
 }
