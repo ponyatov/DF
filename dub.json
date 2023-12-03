@@ -4,7 +4,7 @@
 	"authors":      ["Dmitry Ponyatov"],
 	"copyright":     "Copyright © 2023, Dmitry Ponyatov",
 	"license":       "MIT",
-	"targetName":    "df",
+	"targetName":    "DF",
 	"targetPath":    "bin",
 	"targetType":    "executable",
 	"dependencies": {}
