@@ -29,3 +29,32 @@ install:
 update:
 	sudo apt update
 	sudo apt install -uy `cat apt.txt`
+
+# merge
+MERGE += Makefile LICENSE apt.txt $(D) $(J) $(F)
+MERGE += .clang-format .editorconfig .gitattributes .gitignore
+MERGE += bin doc lib inc src tmp
+
+.PHONY: dev
+dev:
+	git push -v
+	git checkout $@
+	git pull -v
+	git checkout shadow -- $(MERGE)
+#	$(MAKE) doxy ; git add -f docs
+
+.PHONY: shadow
+shadow:
+	git push -v
+	git checkout $@
+	git pull -v
+
+.PHONY: release
+release:
+	git tag $(NOW)-$(REL)
+	git push -v --tags
+	$(MAKE) shadow
+
+ZIP = tmp/$(MODULE)_$(NOW)_$(REL)_$(BRANCH).zip
+zip:
+	git archive --format zip --output $(ZIP) HEAD
