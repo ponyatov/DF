@@ -54,7 +54,8 @@ update:
 
 # merge
 MERGE += Makefile LICENSE apt.txt $(D) $(J) $(F)
-MERGE += .clang-format .editorconfig .gitattributes .gitignore
+MERGE += .clang-format .editorconfig
+MERGE += .gitattributes .gitignore .stignore
 MERGE += bin doc lib inc src tmp
 
 .PHONY: dev
