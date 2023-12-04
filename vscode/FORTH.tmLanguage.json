@@ -1,0 +1,21 @@
+{
+    "name": "forth",
+    "scopeName": "script.forth",
+    "fileTypes": [".f",".ini"],
+    "patterns": [
+        {"include": "#comment"},
+        {"include": "#command"}
+    ],
+    "repository": {
+        "comment": { "patterns": [{
+                    "comment": "pythonic/shell line comment",
+                    "match": "(#.*$)",
+                    "name": "comment.line.number-sign"
+            }]},
+        "command": { "patterns": [{
+                    "comment": "VM command",
+                    "match": "(nop|halt)",
+                    "name": "keyword.control"
+            }]}
+    }
+}
