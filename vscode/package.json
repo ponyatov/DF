@@ -1,0 +1,46 @@
+{
+    "name": "forth",
+    "displayName": "FORTH Script",
+    "version": "0.0.1",
+    "publisher": "dponyatov",
+    "author": {
+        "name": "Dmitry Ponyatov",
+        "email": "dponyatov@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ponyatov/DF/tree/shadow/vscode"
+    },
+    "homepage": "https://github.com/ponyatov/pf/tree/dev/.vscode",
+    "icon": "logo.png",
+    "categories": [
+        "Programming Languages"
+    ],
+    "engines": {
+        "vscode": "^1.50.0"
+    },
+    "activationEvents": [
+        "onStartupFinished",
+        "onLanguage:forth"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [{
+            "command": "f.hello",
+            "title": "FORTH: Hello"
+        }],
+        "languages": [{
+            "id": "forth",
+            "extensions": [".f",".ini"]
+        }],
+        "grammars": [{
+            "language": "forth",
+            "scopeName": "script.forth",
+            "path": "./FORTH.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "forth",
+            "path": "./FORTH.snippets.json"
+        }]
+    }
+}

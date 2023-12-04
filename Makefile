@@ -7,6 +7,9 @@ REL     = $(shell git rev-parse --short=4 HEAD)
 BRANCH  = $(shell git rev-parse --abbrev-ref HEAD)
 CORES  ?= $(shell grep processor /proc/cpuinfo | wc -l)
 
+# tool
+CURL = curl -L -o
+
 # src
 D += $(wildcard src/*.d)
 J += dub.json
@@ -14,12 +17,12 @@ F += $(wildcard lib/*.df)
 
 # all
 .PHONY: all run
-all: bin/$(MODULE)
+all: bin/$(module)
 run: $(F)
 	dub run -- $^
 
 # rule
-bin/$(MODULE): $(D) $(J)
+bin/$(module): $(D) $(J)
 	dub build
 
 # format
@@ -28,9 +31,22 @@ format: tmp/format_d
 tmp/format_d: $(D)
 	dub run dfmt -- -i $? && touch $@
 
+# doc
+doc: doc/yazyk_programmirovaniya_d.pdf doc/Programming_in_D.pdf \
+     doc/BuildWebAppsinVibe.pdf doc/BuildTimekeepWithVibe.pdf
+
+doc/yazyk_programmirovaniya_d.pdf:
+	$(CURL) $@ https://www.k0d.cc/storage/books/D/yazyk_programmirovaniya_d.pdf
+doc/Programming_in_D.pdf:
+	$(CURL) $@ http://ddili.org/ders/d.en/Programming_in_D.pdf
+doc/BuildWebAppsinVibe.pdf:
+	$(CURL) $@ https://raw.githubusercontent.com/reyvaleza/vibed/main/BuildWebAppsinVibe.pdf
+doc/BuildTimekeepWithVibe.pdf:
+	$(CURL) $@ https://raw.githubusercontent.com/reyvaleza/vibed/main/BuildTimekeepWithVibe.pdf
+
 # install
 .PHONY: install update
-install:
+install: doc
 	$(MAKE) update
 update:
 	sudo apt update
@@ -38,8 +54,9 @@ update:
 
 # merge
 MERGE += Makefile LICENSE apt.txt $(D) $(J) $(F)
-MERGE += .clang-format .editorconfig .gitattributes .gitignore
-MERGE += bin doc lib inc src tmp
+MERGE += .clang-format .editorconfig
+MERGE += .gitattributes .gitignore .stignore
+MERGE += bin doc lib inc src tmp vscode
 
 .PHONY: dev
 dev:
