@@ -4,6 +4,7 @@
     "fileTypes": [".f",".ini"],
     "patterns": [
         {"include": "#comment"},
+        {"include": "#number"},
         {"include": "#command"}
     ],
     "repository": {
@@ -11,6 +12,11 @@
                     "comment": "pythonic/shell line comment",
                     "match": "(#.*$)",
                     "name": "comment.line.number-sign"
+            }]},
+        "number": { "patterns": [{
+                "comment": "number",
+                "match": "[+\\-]?[0-9]+",
+                "name": "constant.numeric.integer"
             }]},
         "command": { "patterns": [{
                     "comment": "VM command",
