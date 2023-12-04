@@ -56,7 +56,7 @@ update:
 MERGE += Makefile LICENSE apt.txt $(D) $(J) $(F)
 MERGE += .clang-format .editorconfig
 MERGE += .gitattributes .gitignore .stignore
-MERGE += bin doc lib inc src tmp
+MERGE += bin doc lib inc src tmp vscode
 
 .PHONY: dev
 dev:
