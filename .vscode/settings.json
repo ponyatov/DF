@@ -9,6 +9,11 @@
                 { "command": "workbench.action.terminal.sendSequence",
                     "args": {"text": "\u000D clear ; LANG=C make run \u000D"}}]}
     ],
+
+    // files
+    "files.associations": {
+        "*.f": "forth",
+    },
     
     // editor
     "editor.tabSize": 4,
